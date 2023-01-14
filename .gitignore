@@ -1,4 +1,11 @@
-
-
 # streamlit
 .streamlit/secrets.toml
+
+# Dataset
+Dataset/
+
+# Virtual Environment
+venv/
+venv/*
+env/
+env/*
