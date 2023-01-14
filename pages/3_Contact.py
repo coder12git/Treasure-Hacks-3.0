@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+import pydeck as pdk
 import requests
 
 st.set_page_config(
@@ -34,8 +34,29 @@ if city:
         for doc in doctors
     ]
     df = pd.DataFrame(lat_long, columns=["latitude", "longitude"])
-    st.map(df)
+    st.pydeck_chart(
+        pdk.Deck(
+            map_style="mapbox://styles/mapbox/streets-v12",
+            initial_view_state=pdk.ViewState(
+                latitude=df["latitude"].mean(),
+                longitude=df["longitude"].mean(),
+                zoom=11,
+                pitch=50,
+            ),
+            layers=[
+                pdk.Layer(
+                    "ScatterplotLayer",
+                    data=df,
+                    get_position=["longitude", "latitude"],
+                    get_radius=100,
+                    get_color=[200, 30, 0],
+                    pickable=True,
+                    auto_highlight=True,
+                )
+            ],
+        )
+    )
 
     for i, doctor in enumerate(doctors):
-        st.write(f"{i+1}. Name: ", doctor["name"])
-        st.write("Address: ", doctor["formatted_address"])
+        st.write(f"{i+1}. **Name**: ", doctor["name"])
+        st.write("> **Address**: ", doctor["formatted_address"])
