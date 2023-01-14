@@ -42,9 +42,12 @@ if st.button("Predict"):
             ]
             with st.spinner("Predicting..."):
                 img = PIL.Image.open(pic)
+                # expected  axis -1 of input shape to have value 3 but received input with shape [None, 128, 128, 1]
+                img = img.convert("RGB")
                 img = img.resize((128, 128))
                 img = tf.keras.preprocessing.image.img_to_array(img)
                 img = tf.expand_dims(img, axis=0)
+                img = img / 128.0
 
                 prediction = model.predict(img)
                 prediction = tf.nn.softmax(prediction)
@@ -56,5 +59,5 @@ if st.button("Predict"):
 
                 result = labels[prediction]
 
-                st.write(f"Prediction: {result}")
-                st.write(f"Confidence: {score:.2f}%")
+                st.write(f"**Prediction**: `{result}`")
+                st.write(f"**Confidence**: `{score:.2f}%`")
