@@ -2,10 +2,12 @@ import streamlit as st
 import tensorflow as tf
 import PIL
 
+
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = tf.keras.models.load_model('./model/model.h5')
+    model = tf.keras.models.load_model("./model/model.h5")
     return model
+
 
 st.set_page_config(
     page_title="Alzheimer",
@@ -38,7 +40,7 @@ if st.button("Predict"):
                 "Mild Dementia",
                 "Moderate Dementia",
                 "No Dementia",
-                "Very Mild Dementia"
+                "Very Mild Dementia",
             ]
             with st.spinner("Predicting..."):
                 img = PIL.Image.open(pic)

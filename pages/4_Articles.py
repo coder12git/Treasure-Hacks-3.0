@@ -20,7 +20,8 @@ def load_lottieurl(url):
 
 
 lottie_disease = load_lottieurl(
-    "https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json")
+    "https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json"
+)
 img_alzheimer = Image.open("./images/alzheimer.jpg")
 img_alz = Image.open("images/alzheimer2.jpg")
 img_doctor = Image.open("images/doctor.jpg")
