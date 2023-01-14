@@ -58,7 +58,7 @@ with st.container():
         )
         st.write("##")
         st.write(
-            "[Learn More >](https://www.researchgate.net/publication/356093241_Characteristics_of_publicly_available_skin_cancer_image_datasets_a_systematic_review)"
+            "[**Learn More >**](https://en.wikipedia.org/wiki/Alzheimer%27s_disease)"
         )
     with right_column:
         st.write("##")
@@ -79,10 +79,6 @@ with st.container():
         """
         )
         st.write("##")
-        st.write(
-            "[Learn More >](https://www.google.com)"
-        )
-
-    with right_column:
+  with right_column:
         st.write("##")
         st_lottie(lottie_healthy, height=300, key="healthy")
