@@ -2,8 +2,8 @@
 runOnSave = true
 
 [theme]
-backgroundColor="#e3f6ff"
-secondaryBackgroundColor="#9df1df"
-textColor="#000000"
+primaryColor="#746CB4"
+backgroundColor="#E3F6FF"
+secondaryBackgroundColor="#9DF1DF"
+textColor="#151515"
 font="serif"
-
