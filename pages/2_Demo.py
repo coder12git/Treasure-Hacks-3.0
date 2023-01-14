@@ -7,7 +7,6 @@ def load_model():
     model = tf.keras.models.load_model('./model/model.h5')
     return model
 
-
 st.set_page_config(
     page_title="Alzheimer",
     page_icon="🧠",
@@ -22,11 +21,12 @@ pic = st.file_uploader(
     label="Upload an image",
     type=["jpg", "png", "jpeg"],
     accept_multiple_files=False,
+    help="Upload an image of a brain scan to predict the stage of Alzheimer's Disease",
 )
 
 if st.button("Predict"):
     if pic is None:
-        st.write("Please upload an image file")
+        st.error("Please upload an image file")
     else:
         st.header("Result")
         cols = st.columns([1, 2])
@@ -42,17 +42,15 @@ if st.button("Predict"):
             ]
             with st.spinner("Predicting..."):
                 img = PIL.Image.open(pic)
-                # expected  axis -1 of input shape to have value 3 but received input with shape [None, 128, 128, 1]
                 img = img.convert("RGB")
                 img = img.resize((128, 128))
-                img = tf.keras.preprocessing.image.img_to_array(img)
                 img = tf.expand_dims(img, axis=0)
-                img = img / 128.0
 
                 prediction = model.predict(img)
                 prediction = tf.nn.softmax(prediction)
 
-                score = tf.reduce_max(prediction) * 100
+                score = tf.reduce_max(prediction)
+                score = tf.round(score * 100, 2)
 
                 prediction = tf.argmax(prediction, axis=1)
                 prediction = prediction.numpy()[0]
@@ -60,4 +58,4 @@ if st.button("Predict"):
                 result = labels[prediction]
 
                 st.write(f"**Prediction**: `{result}`")
-                st.write(f"**Confidence**: `{score:.2f}%`")
+                st.write(f"**Confidence**: `{score}%`")
