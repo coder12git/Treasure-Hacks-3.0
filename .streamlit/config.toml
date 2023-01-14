@@ -3,6 +3,7 @@ runOnSave = true
 
 [theme]
 backgroundColor="#e3f6ff"
-secondaryBackgroundColor="#cdfcf6"
+secondaryBackgroundColor="#9df1df"
 textColor="#000000"
 font="serif"
+
