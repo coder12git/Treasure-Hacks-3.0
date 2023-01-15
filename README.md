@@ -84,6 +84,7 @@ We then recommend you specialized doctors in your nearby areas,based on your cur
 ## Challenges we ran into 
 1. Fetching, Installing Dependencies and Fixing Backend Errors.
 2. Creating a model for detecting Alzheimer.
+3. Deployment on a cloud server.
 
 ## Accomplishments that we're proud of 
 We were able to successfully create an application to solve problems for those who are suffering from **Alzheimer's Disease**. Team Work was something we were really proud of specially when we had errors we worked together to fix them.
